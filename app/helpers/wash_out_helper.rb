@@ -4,6 +4,7 @@ module WashOutHelper
     case controller.soap_config.wsdl_style
     when 'rpc'
       if param.map.present? || !param.value.nil?
+        return {} if @action_spec[:skip_xsi_types]
         { :"xsi:type" => param.namespaced_type }
       else
         { :"xsi:nil" => true }
