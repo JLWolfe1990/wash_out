@@ -43,7 +43,8 @@ module WashOut
           :out          => WashOut::Param.parse_def(soap_config, options[:return]),
           :header_out   => options[:header_return].present? ? WashOut::Param.parse_def(soap_config, options[:header_return]) : nil,
           :to           => options[:to] || action,
-          :response_tag => options[:response_tag] || default_response_tag
+          :response_tag => options[:response_tag] || default_response_tag,
+          :namespace_everything => options[:namespace_everything] || false
         )
       end
     end

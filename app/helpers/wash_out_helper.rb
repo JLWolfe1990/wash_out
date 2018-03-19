@@ -29,7 +29,7 @@ module WashOutHelper
     params.each do |param|
       next if param.attribute?
 
-      tag_name = param.name
+      tag_name = @action_spec[:namespace_everything] ? [param.soap_config[:prefix], param.name].join(':') : param.name
       param_options = wsdl_data_options(param)
       param_options.merge! wsdl_data_attrs(param)
 
