@@ -33,6 +33,8 @@ module WashOutHelper
       param_options = wsdl_data_options(param)
       param_options.merge! wsdl_data_attrs(param)
 
+      next if param_options && param_options[:'xsi:nil'] && @action_spec[:skip_blanks]
+
       if param.struct?
         if param.multiplied
           param.map.each do |p|
