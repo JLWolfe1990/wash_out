@@ -1,5 +1,8 @@
 xml.instruct!
-xml.tag! "soap:Envelope", "xmlns:soap" => 'http://schemas.xmlsoap.org/soap/envelope/', "xmlns:#{@prefix}" => @namespace do
+opts = { "xmlns:soap" => 'http://schemas.xmlsoap.org/soap/envelope/', "xmlns:#{@prefix}" => @namespace }
+@namespaces.each { |obj| opts.merge!(obj) }
+
+xml.tag! "soap:Envelope", opts do
   if !header.nil?
     xml.tag! "soap:Header" do
       xml.tag! "#{@prefix}:#{@action_spec[:response_tag]}" do

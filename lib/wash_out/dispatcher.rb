@@ -84,6 +84,7 @@ module WashOut
     # Render a SOAP response.
     def _render_soap(result, options)
       @namespace   = soap_config.namespace
+      @namespaces  = soap_config.namespaces
       @prefix      = soap_config.prefix
       @operation   = soap_action = request.env['wash_out.soap_action']
       @action_spec = self.class.soap_actions[soap_action]
