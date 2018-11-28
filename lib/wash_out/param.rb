@@ -137,7 +137,10 @@ module WashOut
       return [] if definition == nil
 
       if definition.is_a?(Class) && definition.ancestors.include?(WashOut::Type)
+        p "*"*100
+        p definition
         definition = definition.wash_out_param_map
+        p definition
       end
 
       if [Array, Symbol].include?(definition.class)
